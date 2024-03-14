@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { axiosInstance } from "../config/axiosInstance";
 import { LoginResponse } from "../../interfaces/auth.interface";
 import { Register } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export class AuthService {
   static login = async (
@@ -37,8 +38,8 @@ export class AuthService {
       return data;
     } catch (error) {
       if (error instanceof AxiosError) {
-        if (error.response?.data.statusCode === 409) {
-          // toast.error("The username is already in use");
+        if (error.response?.data.status === 409) {
+          toast.error("The email is already in use");
         }
         console.log(error.response?.data);
         throw new Error(error.response?.data);
