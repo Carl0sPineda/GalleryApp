@@ -16,7 +16,17 @@ export class UserService {
       }
 
       console.log(error);
-      throw new Error("Unable to get posts");
+      throw new Error("Unable to get all users");
+    }
+  };
+
+  static getUserById = async (id: string): Promise<Users> => {
+    try {
+      const { data } = await axiosInstance.get<Users>(`/users/${id}`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error("Unable to get user posts");
     }
   };
 }

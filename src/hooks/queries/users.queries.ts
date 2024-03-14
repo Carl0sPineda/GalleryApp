@@ -9,4 +9,11 @@ const useGetUsers = () => {
   });
 };
 
-export { useGetUsers };
+const useGetUserById = (id: string) => {
+  return useQuery<Users>({
+    queryKey: ["user", id],
+    queryFn: () => UserService.getUserById(id),
+  });
+};
+
+export { useGetUsers, useGetUserById };
