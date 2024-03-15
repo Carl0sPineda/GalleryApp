@@ -4,3 +4,9 @@ export interface Posts {
   image?: string;
   userId: string;
 }
+
+export interface Post {
+  title: string;
+  image?: string;
+  userId: string;
+}
